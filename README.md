@@ -29,4 +29,31 @@ Recall from probability theory that Bayes Rule (or Bayes Theorem) related
 onditional probabilities: If A and B are events, then
  P(B|A) = [ P(A|B) . P(B) ] / P(A)
  
+ We often use the Law of Total probability to replace the P(A) term in the
+denominator …
+How can we use this to approximate a value for y? Idea: Given the training set, we
+will try to approximate the probabilities for the values of y … then pick the value with
+the largest probability
+
+Bayes Optimal Classifier
+Let’s state this more formally:
+Suppose our response variable y takes on values {v1, v2, ... , vk} and we have n
+predictors (this is the general case).
+Suppose we are given a new predictor value a =< a1, a2, … ,an >, and suppose
+each attribute is categorical. We want to find
+
+max j { P(vj | < a1, a2 , ... an>)}
+This is called the Bayes Optimal Classifier (or just Bayes Classifier)
  
+Key assumption: The variables that make up the attribute tuple are conditionally independent, so
+we can calculate the conditional probability as
+
+ P(< a1, a2 , ... an> | vj) = Product over j { P(ai | vj) }
+
+The “independence” assumption does not seem to hurt in practice
+Naïve Bayes is a good classifier for larger data sets, because it tends to be fast
+Another advantage – this approach is easy to evolve, since there is no model
+◦ If data is changing or flowing, simply update the probabilities – do not use the entire
+dataset to compute a model
+Downside – not good at predicting response variables that depend on
+combinations of predictors
